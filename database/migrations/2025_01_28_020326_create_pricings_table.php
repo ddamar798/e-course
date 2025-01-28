@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('pricings', function (Blueprint $table) {
             $table->id();
+            $table->string('name'); // name of the pricing
+            $table->integer('duration'); // Duration in mounth
+            $table->integer('price'); // Created at and Update at
+            $table->softDeletes();
             $table->timestamps();
         });
     }
