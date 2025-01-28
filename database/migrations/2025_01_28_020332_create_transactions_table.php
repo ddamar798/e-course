@@ -13,6 +13,25 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->string('booking_trx_id');
+
+            $table->foreignId('user_id')->constrained()->OnDelete('cascade');
+            $table->foreignId('pricing_id')->constrained()->onDelete('cascade');
+
+            // unsignedInteger digunakan karena angkanya tidakboleh Negatif.
+            $table->unsignedInteger('sub_tottal_amount');
+            $table->unsignedInteger('grand_tottal_amount');
+            $table->unsignedInteger('total_tax_amount');
+
+            $table->boolean('is_paid');
+
+            $table->string('payment_type');
+            $table->string('proof')->nullable(); // nullable (boleh kosong).
+
+            $table->date('started_at');
+            $table->date('ended_at');
+            
+            $table->softDeletes();
             $table->timestamps();
         });
     }
