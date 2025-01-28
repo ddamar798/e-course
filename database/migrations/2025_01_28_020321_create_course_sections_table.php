@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('position');
-            $table->foreignId('courese_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('courses_id')->constrained()->cascadeOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });

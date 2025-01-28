@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->id();
-            $table->string('slug');
+           $table->id();
+           $table->string('slug');
             $table->string('name');
             $table->string('tumbnail');
 
-            $table->text('about');
+            $table->text('abouts');
             $table->boolean('is_popular');
 
             //create foreignid key columns
