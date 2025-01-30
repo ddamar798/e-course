@@ -37,4 +37,10 @@ class Transaction extends Model
     {
         return $this->belongsTo(user::class, 'user_id');
     }
+
+    // Untuk cek apakah transaksi masih aktif atau expired.
+    public function isActive(): bool
+    {
+        return $this->is_paid && $this->ended_at->isFuture();
+    }
 }
