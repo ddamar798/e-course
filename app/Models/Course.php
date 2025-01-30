@@ -50,5 +50,13 @@ class Course extends Model
     {
         return $this->belongsTo(category::class, 'category_id');
     }
+
+      // Menghitung kelas ini punya berapa section.
+    public function getContentAtribute()
+    {
+     return $this->courseSection->sum(function ($section){
+            return $section->sectionContents->count();
+        });
+    }
 }
 
