@@ -20,4 +20,14 @@ class Pricing extends Model
     {
         return $this->hasMany(transaction::class);
     }
+
+    // Agar paket yang aktif tidak dapat dibeli lagi.
+    public function isSubscribedByUser($userId)
+    {
+        return $this->transactions()
+        ->where('user_id', $userId)
+        ->where('is_paid', true) // Only consider paid subscriptions.
+        ->where('ended_at', '>=', now())
+        ->exists();
+    }
 }
