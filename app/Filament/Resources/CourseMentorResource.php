@@ -17,7 +17,7 @@ class CourseMentorResource extends Resource
 {
     protected static ?string $model = CourseMentor::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     public static function form(Form $form): Form
     {
