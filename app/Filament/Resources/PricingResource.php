@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PricingResource\Pages;
-use App\Filament\Resources\PricingResource\RelationManagers;
-use App\Models\Pricing;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Pricing;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Fieldset;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\PricingResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\PricingResource\RelationManagers;
 
 class PricingResource extends Resource
 {
@@ -24,6 +25,22 @@ class PricingResource extends Resource
         return $form
             ->schema([
                 //
+                Fieldset::make('Details')
+                ->schema([
+                    Forms\Components\TextInput::make('name')
+                    ->maxLength(250)
+                    ->required(),
+
+                    Forms\Components\TextInput::make('price')
+                                ->required()
+                                ->numeric()
+                                ->prefix('IDR'),
+
+                                Forms\Components\TextInput::make('duration')
+                                ->required()
+                                ->numeric()
+                                ->prefix('Mounth'),
+                ])
             ]);
     }
 
