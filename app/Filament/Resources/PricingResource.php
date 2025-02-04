@@ -47,8 +47,14 @@ class PricingResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+        // Agar table bisa ditampilkan.
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('name')
+                ->searchable(),
+
+                Tables\Columns\TextColumn::make('price'),
+                Tables\Columns\TextColumn::make('duration'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
