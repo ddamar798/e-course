@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\CategoryResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CategoryResource\RelationManagers;
+use Filament\Tables\Columns\TextColumn;
 
 class CategoryResource extends Resource
 {
@@ -35,8 +36,12 @@ class CategoryResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+             // Untuk menampilkan Table.
             ->columns([
                 //
+                TextColumn::make('name')
+                ->sortable() // Agar bisa diurutkan dari Alphabet.
+                ->searchable() // Agar bisa dicari.
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
