@@ -21,7 +21,7 @@ class Category extends Model
 
     // Agar saat 'name' berubah 'slug' juga akan otomatis berubah.
     public function setNameAttribute($value){
-        $this->atttributes['name'] = $value;
+        $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
 
